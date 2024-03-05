@@ -1,26 +1,30 @@
 $("#btn").click(()=>{
     $("body").toggleClass("dark");
 });
-
+  
 $(document).ready(function() {
-    $(".addtask").click(function() {
-        var taskName = $(".new-task").val();
-        if (taskName !== "") {
-            $("#task-list").append(
-                '<li><span class="task">' +
-                taskName +
-                '</span><button class="delete">Delete</button></li>'
-            );
-            $(".new-task").val("");
-        }
-    });
+  $('#addTask').click(function() {
+    var task = $('#taskInput').val().trim();
+    if (task !== '') {
+      $('#taskList').append('<li>' + task + '<button class="delete">Delete</button></li>');
+      $('#taskInput').val('');
+    }
+  });
 
-    $("#task-list").on("click", ".task", function() {
-        $(this).toggleClass("completed");
-    });
+  $(document).on('click', '.delete', function() {
+    $(this).parent().remove();
+  });
 
-    // $("#task-list").on("click", ".delete", function() {
-    //     $(this).parent().remove();
-    // });
+  // Function to vibrate the phone
+  function vibratePhone() {
+    if ('vibrate' in navigator) {
+      navigator.vibrate(200); // Vibrate for 200 milliseconds
+    }
+  }
 
+  // Trigger vibratePhone function when a task is added or completed
+  $('#addTask, .complete').click(function() {
+    vibratePhone();
+  });
 });
+
