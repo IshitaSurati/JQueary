@@ -1,0 +1,19 @@
+:root{
+    --bgColor:white;
+    --textColor:black;
+}
+
+.dark{
+    --bgColor:black;
+    --textColor:white;
+}
+
+body{
+    box-sizing: border-box;
+    background-color: var(--bgColor);
+    color: var(--textColor);
+    width: 100%;
+    margin: 0;
+    padding: 0;
+
+}
